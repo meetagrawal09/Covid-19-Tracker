@@ -1,0 +1,25 @@
+.table{
+    margin-top: 20px;
+
+    /* overflow is made scrollable -> happens only when you provide a height */
+    overflow: scroll;
+    height: 400px;
+    color: #6a5d5d;
+
+}
+
+/* this is for the responsive-ness */
+.table tr{
+    display: flex;
+    justify-content: space-between;
+}
+
+.table td{
+    padding: 0.5rem;
+}
+
+
+/* every n-th odd entry gets a background color */
+.table tr:nth-of-type(odd){
+    background-color: #f3f2f8;
+}

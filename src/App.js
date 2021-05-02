@@ -10,6 +10,12 @@ import InfoBox from './InfoBox';
 
 import Map from './Map';
 
+import Table from './Table';
+
+import LineGraph from './LineGraph';
+
+import {sortData} from './util';
+
 function App() {
 
   //state is like a short term memory for react or how to write a variable in react
@@ -21,6 +27,9 @@ function App() {
   const [country,setCountry]= useState("worldwide");
 
   const [countryInfo,setCountryInfo]=useState({});
+
+  const [tableData,setTableData] = useState([]);
+
   //API call to this url for data
   //https://disease.sh/v3​/covid-19​/countries
 
@@ -70,6 +79,12 @@ function App() {
           ))
 
           //changing the state of the countries array
+
+          //we need to sort this data
+          const sortedData=sortData(data);
+          setTableData(sortedData);
+
+
           setCountries(countries);
       })
     }
@@ -145,8 +160,15 @@ function App() {
       <Card className="app__right">
           <CardContent>
             <h3>Live Cases by Country</h3>
+
+            <Table countries={tableData} />
+
             <h3>WorldWide new Cases</h3>
+
+            <LineGraph/>
+
           </CardContent>
+          
       </Card>
     </div>
   );
